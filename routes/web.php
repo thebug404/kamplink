@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mails\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LinkController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,3 +49,9 @@ Route::get('/dashboard', function () {
 })
 ->middleware("auth")
 ->name("dashboard");
+
+// ---------- Links --------- //
+Route::resource(
+    '/profile/links',
+    LinkController::class
+)->middleware("auth");
