@@ -1,0 +1,56 @@
+<x-default-layout>
+     <div class="container py-5">
+          <div class="row justify-content-center">
+               <div class="col-12 col-sm-10 col-md-8 col-lg-12">
+                    <div class="card shadow border-0">
+                         <div class="card-body">
+                              <div class="row align-items-center">
+                                   <div class="col-12 col-lg-6 d-none d-lg-block">
+                                        <img
+                                             src="{{ asset('/images/banner-contactme.svg') }}"
+                                             alt="Kamplink contact me banner"
+                                             class="w-100"
+                                        >
+                                   </div>
+                                   <div class="col-12 col-lg-6">
+                                        <div class="mb-5">
+                                             <h1 class="card-title">
+                                                  <strong>Contactanos</strong>
+                                             </h1>
+                                             <p class="card-subtitle text-muted">Comuniquenos sus dudas, estamos para servirle.</p>
+                                        </div>
+                                        <form action="">
+                                             <x-input
+                                                  :text="'Escriba su correo electronico'"
+                                                  :title="'Correo electronico'"
+                                                  name="email"
+                                                  autofocus
+                                             ></x-input>
+
+                                             <x-input
+                                                  :text="'Escriba el asunto'"
+                                                  :title="'Asunto'"
+                                                  name="subject"
+                                             ></x-input>
+
+                                             <div class="form-group">
+                                                  <label for="message">Mensaje</label>
+                                                  <textarea
+                                                  placeholder="Escriba su mensaje"
+                                                  class="form-control"
+                                                  name="message"
+                                                  id="message"
+                                                  rows="4"
+                                                  ></textarea>
+                                             </div>
+
+                                             <button class="btn btn-info w-100 text-white">Enviar</button>
+                                        </form>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</x-default-layout>
