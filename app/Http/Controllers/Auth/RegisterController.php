@@ -23,7 +23,7 @@ class RegisterController extends Controller {
         // Validate fields user.
         $data = request()->validate([
             "name" => "required|string|min:5",
-            "email" => "required|string|email",
+            "email" => "required|string|email|unique:users",
             "password" => "required|string|min:8"
         ]);
 

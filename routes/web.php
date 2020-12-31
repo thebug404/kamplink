@@ -18,6 +18,11 @@ Route::get(
     [ContactController::class, "create"]
 )->name("contact");
 
+Route::post(
+    '/contact',
+    [ContactController::class, "store"]
+)->name("contact.store");
+
 // ----------- Login ----------- //
 Route::get(
     '/login',

@@ -19,4 +19,35 @@
             </div>
         </div>
     </div>
+
+    <div class="container pt-5">
+        <h1 class="text-center">
+            <strong>Disfruta de Kamplink desde cualquier dispositivo.</strong>
+        </h1>
+
+        <div class="row py-5">
+            <div class="col-12 p-2">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <img src="{{ asset('/images/kamplink-pc.png') }}" alt="" class="w-100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-5 p-2">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <img src="{{ asset('/images/kamplink-phone.png') }}" alt="" class="w-100">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-7 p-2">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <img src="{{ asset('/images/kamplink-tablet.png') }}" alt="" class="w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-default-layout>

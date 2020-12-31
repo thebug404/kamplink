@@ -19,16 +19,19 @@
                                              </h1>
                                              <p class="card-subtitle text-muted">Comuniquenos sus dudas, estamos para servirle.</p>
                                         </div>
-                                        <form action="">
+                                        <form action="{{ route('contact.store') }}" method="POST">
+                                             @csrf
                                              <x-input
                                                   :text="'Escriba su correo electronico'"
                                                   :title="'Correo electronico'"
+                                                  value="{{ old('email') }}"
                                                   name="email"
                                                   autofocus
                                              ></x-input>
 
                                              <x-input
                                                   :text="'Escriba el asunto'"
+                                                  value="{{ old('subject') }}"
                                                   :title="'Asunto'"
                                                   name="subject"
                                              ></x-input>
@@ -41,7 +44,7 @@
                                                   name="message"
                                                   id="message"
                                                   rows="4"
-                                                  ></textarea>
+                                                  >{{ old('message') }}</textarea>
                                              </div>
 
                                              <button class="btn btn-info w-100 text-white">Enviar</button>

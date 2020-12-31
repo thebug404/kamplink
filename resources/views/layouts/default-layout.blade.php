@@ -13,6 +13,12 @@
     <x-navbar></x-navbar>
     <!-- #End navbar -->
 
+    <!-- Message -->
+    @if (session("message"))
+        <x-alert :status="session('status')" :text="session('message')"></x-alert>
+    @endif
+    <!-- #End message -->
+
     <!-- Main content -->
     <div>
         {{ $slot }}

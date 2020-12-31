@@ -88,14 +88,12 @@
             
             <div>
                 @if (session("message"))
-                    <div class="alert alert-{{ session('status') }} alert-dismissible fade show rounded-0 }}" role="alert">
-                        {{ session("message") }}
-                        <button type="button" class="btn-close btn" data-bs-dismiss="alert" aria-label="Close">
-                            <strong>X</strong>
-                        </button>
-                    </div>
+                <x-alert :status="session('status')" :text="session('message')"></x-alert>
                 @endif
-                {{ $slot }}
+                
+                <div class="py-3">
+                    {{ $slot }}
+                </div>
             </div>
         </div>
     </div>
