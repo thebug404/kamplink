@@ -6,6 +6,8 @@ use App\Http\Controllers\Mails\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LinkController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Link;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,7 +47,12 @@ Route::post(
 
 // ------------ Profile ------------ //
 Route::get('/dashboard', function () {
-    return view("profile.dashboard");
+    $links = Link::where("user_id", Auth::user()->id)
+    ->orderByDesc("created_at")
+    ->limit(10)
+    ->get();
+    
+    return view("profile.dashboard", compact("links"));
 })
 ->middleware("auth")
 ->name("dashboard");

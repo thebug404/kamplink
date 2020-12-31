@@ -1,1 +1,5 @@
 @import "./includes/sidebar.css";
+
+.example-spacer {
+     flex: 1 1 auto;
+}

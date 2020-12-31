@@ -36,24 +36,29 @@
                               <span class="mx-2">Tiempo</span>
                          </div>
                          <div class="card-body text-center">
-                              <img src="/icons/dawn.svg" width="150px" height="150px" class="mx-auto mb-2" alt="">
-                              <p class="card-title m-0 p-0 text-info">Lun, 18 Nov 2020</p>
-                              <span class="card-subtitle text-muted">
-                                   05:22 AM
-                              </span>
+                              <img id="image-section" width="150px" height="150px" class="mx-auto mb-2" alt="">
+                              <p id="date-section" class="card-title m-0 p-0 text-info"></p>
+                              <span id="time-section" class="card-subtitle text-muted"></span>
                          </div>
                     </div>
                </div>
 
                <div class="col-12 col-sm-6 col-lg-4 p-2">
                     <div class="card shadow border-0">
-                         <div class="card-body">
+                         <div class="card-header bg-white border-0">
                               <div class="card-subtitle text-muted">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                                    </svg>
                                    <span class="mx-2">Agregadas recientemente.</span>
                               </div>
+                         </div>
+                         <div class="card-body pt-0" style="overflow: auto; height: 260px">
+                              @forelse ($links as $link)
+                                   <x-link-sticker :link="$link"></x-link-sticker>
+                              @empty
+                                   <img src="{{ asset('/icons/broke.svg') }}" height="150px" class="w-100">
+                              @endforelse
                          </div>
                     </div>
                </div>

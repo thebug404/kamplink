@@ -2,7 +2,6 @@
     <label for="{{ $attributes['name'] }}">{{ $title }}</label>
     <input
         class="form-control {{ $errors->has($attributes['name']) ? 'is-invalid' : '' }}"
-        value="{{ old($attributes['name']) }}"
         id="{{ $attributes['name'] }}"
         autocomplete="off"
         {{ $attributes }}

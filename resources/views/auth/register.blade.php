@@ -23,6 +23,7 @@
                                              @csrf
                                              <x-input
                                                   :text="'Escriba su nombre'"
+                                                  value="{{ old('name') }}"
                                                   :title="'Nombres'"
                                                   name="name"
                                                   autofocus
@@ -31,6 +32,7 @@
                                              <x-input
                                                   :text="'Escriba su correo electronico'"
                                                   :title="'Correo electronico'"
+                                                  value="{{ old('email') }}"
                                                   name="email"
                                              ></x-input>
 

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\Link;
+
 class LinkController extends Controller {
     /**
      * Display a listing of the resource.
@@ -11,7 +15,11 @@ class LinkController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view("profile.links.index");
+        $links = Link::where("user_id", Auth::user()->id)
+        ->orderByDesc("created_at")
+        ->get();
+
+        return view("profile.links.index", compact("links"));
     }
 
     /**
@@ -20,7 +28,9 @@ class LinkController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view("profile.links.create");
+        return view("profile.links.create", [
+            "link" => new Link
+        ]);
     }
 
     /**
@@ -30,12 +40,24 @@ class LinkController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        // Validate field form
         $data = request()->validate([
             "title" => "required|string",
             "subtitle" => "",
             "link" => "required|string",
             "banner" => "",
             "description" => ""
+        ]);
+        
+        // Added user to link
+        $data["user_id"] = Auth::user()->id;
+        
+        // Save link in the database
+        Link::create($data);
+
+        return redirect()->route("links.index")->with([
+            "message" => "El enlace se agrego a la lista con exito.",
+            "status" => "primary"
         ]);
     }
 
@@ -45,8 +67,8 @@ class LinkController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        //
+    public function show(Link $link) {
+        return view("profile.links.show", compact("link"));
     }
 
     /**
@@ -55,8 +77,8 @@ class LinkController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
-        //
+    public function edit(Link $link) {
+        return view("profile.links.edit", compact("link"));
     }
 
     /**
@@ -66,8 +88,23 @@ class LinkController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
-        //
+    public function update(Link $link) {
+        // Validate field form
+        $data = request()->validate([
+            "title" => "required|string",
+            "subtitle" => "",
+            "link" => "required|string",
+            "banner" => "",
+            "description" => ""
+        ]);
+        
+        // Update link
+        $link->update($data);
+
+        return redirect()->route("links.show", $link)->with([
+            "message" => "El enlace fue modificado con exito.",
+            "status" => "warning"
+        ]);
     }
 
     /**
@@ -76,7 +113,14 @@ class LinkController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
-        //
+    public function destroy(Link $link) {
+        $link->delete();
+
+        return redirect()
+        ->route("links.index")
+        ->with([
+            "message" => "El enlace fue eliminado de su lista con exito.",
+            "status" => "danger"
+        ]);
     }
 }

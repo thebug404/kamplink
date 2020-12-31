@@ -24,8 +24,10 @@
                                              <x-input
                                                   :text="'Escriba su correo electronico'"
                                                   :title="'Correo electronico'"
+                                                  value="{{ old('email') }}"
                                                   type="email"
                                                   name="email"
+                                                  autofocus
                                              ></x-input>
 
                                              <x-input
