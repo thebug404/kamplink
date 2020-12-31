@@ -24,6 +24,7 @@
         <h1 class="text-center">
             <strong>Disfruta de Kamplink desde cualquier dispositivo.</strong>
         </h1>
+        <p class="text-muted text-center d-block w-100">Guarda tus sitios web favoritos.</p>
 
         <div class="row py-5">
             <div class="col-12 p-2">
@@ -50,4 +51,6 @@
             </div>
         </div>
     </div>
+
+    <x-footer></x-footer>
 </x-default-layout>
