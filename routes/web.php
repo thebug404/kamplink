@@ -2,16 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Mails\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LinkController;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Link;
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware("guest");
+Route::get(
+    '/',
+    [HomeController::class, "index"]
+)->middleware("guest");
 
 Route::get(
     '/contact',
@@ -51,14 +52,10 @@ Route::post(
 )->name("auth.register.store");
 
 // ------------ Profile ------------ //
-Route::get('/dashboard', function () {
-    $links = Link::where("user_id", Auth::user()->id)
-    ->orderByDesc("created_at")
-    ->limit(10)
-    ->get();
-    
-    return view("profile.dashboard", compact("links"));
-})
+Route::get(
+    '/dashboard',
+    [ProfileController::class, "dashboard"]
+)
 ->middleware("auth")
 ->name("dashboard");
 
