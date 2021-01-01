@@ -39,12 +39,15 @@
                                              <div class="form-group">
                                                   <label for="message">Mensaje</label>
                                                   <textarea
-                                                  placeholder="Escriba su mensaje"
-                                                  class="form-control"
-                                                  name="message"
-                                                  id="message"
-                                                  rows="4"
+                                                       class="form-control {{ $errors->has('message') ? 'is-invalid' : '' }}"
+                                                       placeholder="Escriba su mensaje"
+                                                       name="message"
+                                                       id="message"
+                                                       rows="4"
                                                   >{{ old('message') }}</textarea>
+                                                  @error('message')
+                                                      <small class="form-text invalid-feedback">{{ $message }}</small>
+                                                  @enderror
                                              </div>
 
                                              <button class="btn btn-info w-100 text-white">Enviar</button>
