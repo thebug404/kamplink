@@ -39,6 +39,7 @@
                                              <x-input
                                                   :text="'Escriba su contraseña.'"
                                                   :title="'Contraseña'"
+                                                  type="password"
                                                   name="password"
                                              ></x-input>
 
