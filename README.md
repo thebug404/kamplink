@@ -24,4 +24,5 @@ Once the previous section is completed, run this command in order:
 3. `composer update --no-scripts` 
 4. `composer dump-autoload` Updates the automatic class loader information. This command is useful when you add new classes and you don't want to run the command.
 5. `php artisan key:generate` This command will generate a key for our project, and it will automatically assign it in the `.env` file.
-6. `php artisan serve` This command will generate a development server.
+6. `php artisan migrate` This command will create the necessary tables to save the data in the Database.
+7. `php artisan serve` This command will generate a development server.
